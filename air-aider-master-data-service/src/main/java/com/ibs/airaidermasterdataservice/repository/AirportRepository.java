@@ -4,6 +4,8 @@
 package com.ibs.airaidermasterdataservice.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.ibs.airaidermasterdataservice.entity.AirportEntity;
@@ -19,6 +21,8 @@ public interface AirportRepository extends JpaRepository<AirportEntity, Integer>
 	 * @param airportCode
 	 * @return
 	 */
-	AirportEntity findByAirportCode(String airportCode);
+	@Query("From AirportEntity where airportCode=:d")
+	AirportEntity findByAirportCode(@Param ("d") String airportCode);
+	
 
 }

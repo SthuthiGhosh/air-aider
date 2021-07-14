@@ -41,8 +41,7 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 		Map<String, AirportDetailsModel> airportDetailsMap = new HashMap<>();
 		for (String airportCode : airportCodeSet) {
 			AirportEntity airportEntity = airportRepository.findByAirportCode(airportCode);
-			AirportDetailsEntity airportDetailsEntity = airportDetailsRepository.findById(airportEntity.getAirportId())
-					.get();
+			AirportDetailsEntity airportDetailsEntity = airportDetailsRepository.findByAirportId(airportEntity.getAirportId());
 			airportDetailsMap.put(airportCode, AirportDetailsModel.entityToModel(airportDetailsEntity));
 		}
 		masterDataResponseModel.setAirportDetails(airportDetailsMap);

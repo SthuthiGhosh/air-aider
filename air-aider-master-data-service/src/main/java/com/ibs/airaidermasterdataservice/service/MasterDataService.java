@@ -28,6 +28,7 @@ public class MasterDataService {
 		if (masterDataRequestModel.getAirportCodeSet() != null) {
 		masterDataResponseModel=airportMasterDataService.getAirportDetails(masterDataRequestModel.getAirportCodeSet(),
 					masterDataRequestModel.getQueryId());
+		System.out.println(masterDataRequestModel.getAirportCodeSet());
 		}
 
 		return masterDataResponseModel;
