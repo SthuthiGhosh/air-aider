@@ -5,6 +5,8 @@ package com.ibs.airaidermasterdataservice.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -17,8 +19,10 @@ import javax.persistence.Table;
 public class CityEntity {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "CITY_ID")
 	private int cityId;
+	
 	@Column(name = "COUNTRY_ID")
 	private int countryId;
 

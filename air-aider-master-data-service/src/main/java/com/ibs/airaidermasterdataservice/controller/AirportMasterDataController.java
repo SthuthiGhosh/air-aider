@@ -20,14 +20,13 @@ import com.ibs.airaidermasterdataservice.service.MasterDataService;
 @RestController
 @RequestMapping("/airport")
 public class AirportMasterDataController {
-	
+
 	@Autowired
 	private MasterDataService masterDataService;
-	
 
 	@PostMapping("/fetchmasterdata")
 	MasterDataResponseModel fetchMasterData(@RequestBody MasterDataRequestModel masterDataRequestModel) {
 		return masterDataService.fetchMasterData(masterDataRequestModel);
-		
+
 	}
 }

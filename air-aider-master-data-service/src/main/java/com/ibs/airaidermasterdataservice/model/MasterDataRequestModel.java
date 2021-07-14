@@ -5,10 +5,13 @@ package com.ibs.airaidermasterdataservice.model;
 
 import java.util.Set;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @author 91940
  *
  */
+@Component
 public class MasterDataRequestModel {
     
 	private String queryId;

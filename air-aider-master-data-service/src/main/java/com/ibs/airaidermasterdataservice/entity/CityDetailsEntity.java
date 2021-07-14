@@ -4,18 +4,24 @@
 package com.ibs.airaidermasterdataservice.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-import static com.ibs.airaidermasterdataservice.util.AirAiderCommonConstants.LangCodes;
-
+import com.ibs.airaidermasterdataservice.util.AirAiderCommonConstants.LangCodes;
 
 /**
  * @author 91940
  *
  */
+@Entity
+@Table(name = "AIR_AIDER_CITY_DETAILS")
 public class CityDetailsEntity {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "CITY_DETAIL_ID")
 	private int cityDetailId;
 
@@ -23,7 +29,7 @@ public class CityDetailsEntity {
 	private int cityId;
 	@Column(name = "CITY_NAME")
 	private String cityName;
-	
+
 	@Column(name = "LANG_CODE")
 	private LangCodes langCode;
 

@@ -5,13 +5,16 @@ package com.ibs.airaidermasterdataservice.service;
 
 import java.util.Set;
 
+import org.springframework.stereotype.Service;
+
 import com.ibs.airaidermasterdataservice.model.MasterDataResponseModel;
 
 /**
  * @author 91940
  *
  */
-public interface AirportMasterDataService {
+@Service
+ public interface AirportMasterDataService {
 
 	MasterDataResponseModel getAirportDetails(Set<String> airportCodeSet, String queryId);
 
