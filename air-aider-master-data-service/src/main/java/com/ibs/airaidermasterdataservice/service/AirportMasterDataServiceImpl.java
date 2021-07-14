@@ -4,6 +4,7 @@
 package com.ibs.airaidermasterdataservice.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -48,4 +49,22 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 		return masterDataResponseModel;
 	}
 
+	/*
+	 *@see com.ibs.airaidermasterdataservice.service.AirportMasterDataService#getAirportDetailsByCode(java.util.List, java.lang.String)
+	 */
+	@Override
+	public MasterDataResponseModel getAirportDetailsByCode(List<String> airportCodeList, String queryId) {
+		MasterDataResponseModel masterDataResponseModel = new MasterDataResponseModel();
+		masterDataResponseModel.setQueryId(queryId);
+		Map<String, AirportDetailsModel> airportDetailsMap = new HashMap<>();
+		for (String airportCode : airportCodeList) {
+			AirportEntity airportEntity = airportRepository.findByAirportCode(airportCode);
+			AirportDetailsEntity airportDetailsEntity = airportEntity.getAirportDetailsEntity();
+			airportDetailsMap.put(airportCode, AirportDetailsModel.entityToModel(airportDetailsEntity));
+		}
+		masterDataResponseModel.setAirportDetails(airportDetailsMap);
+		return masterDataResponseModel;
+	}
+
+	
 }

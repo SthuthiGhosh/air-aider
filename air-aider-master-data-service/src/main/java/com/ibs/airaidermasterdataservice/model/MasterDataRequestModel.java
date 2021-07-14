@@ -3,6 +3,7 @@
  */
 package com.ibs.airaidermasterdataservice.model;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.stereotype.Component;
@@ -16,6 +17,19 @@ public class MasterDataRequestModel {
     
 	private String queryId;
 	private Set<String> airportCodeSet;
+	private List<String> airportCodeList;
+	/**
+	 * @return the airportCodeList
+	 */
+	public List<String> getAirportCodeList() {
+		return airportCodeList;
+	}
+	/**
+	 * @param airportCodeList the airportCodeList to set
+	 */
+	public void setAirportCodeList(List<String> airportCodeList) {
+		this.airportCodeList = airportCodeList;
+	}
 	/**
 	 * @return the queryId
 	 */

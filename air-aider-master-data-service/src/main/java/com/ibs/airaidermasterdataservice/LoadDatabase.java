@@ -31,25 +31,34 @@ public class LoadDatabase implements CommandLineRunner {
 	 */
 	@Override
 	public void run(String... args) throws Exception {
-		
-		
-		AirportEntity airportEntity2 = new AirportEntity();
-		airportEntity2.setCityId(234);
-		airportEntity2.setAirportCode("BBB");
-		airportRepository.save(airportEntity2);
 
-		AirportDetailsEntity airportDetailsEntity = new AirportDetailsEntity();
-		airportDetailsEntity.setLangCode(LangCodes.EN);
-		airportDetailsEntity.setAirportName("calicut");
-		airportDetailsEntity.setAirportId(1);
-//		airportDetailsRepository.save(airportDetailsEntity);
+		
+		AirportDetailsEntity airportDetailsEntity1 = new AirportDetailsEntity();
+		airportDetailsEntity1.setLangCode(LangCodes.EN);
+		airportDetailsEntity1.setAirportName("calicut");
+		airportDetailsEntity1.setAirportId(1);
 		
 		AirportEntity airportEntity1 = new AirportEntity();
 		airportEntity1.setAirportCode("AAA");
 		airportEntity1.setCityId(123);
-		airportEntity1.setAirportDetailsEntity(airportDetailsEntity);
+		airportEntity1.setAirportDetailsEntity(airportDetailsEntity1);
 		airportRepository.save(airportEntity1);
+		
+		AirportDetailsEntity airportDetailsEntity2 = new AirportDetailsEntity();
+		airportDetailsEntity2.setLangCode(LangCodes.JA);
+		airportDetailsEntity2.setAirportName("Tokyo");
+		airportDetailsEntity2.setAirportId(3);
+		
+		AirportEntity airportEntity2 = new AirportEntity();
+		airportEntity2.setCityId(234);
+		airportEntity2.setAirportCode("BBB");
+		airportEntity2.setAirportDetailsEntity(airportDetailsEntity2);
+		airportRepository.save(airportEntity2);
 
+
+		
+		
+		
 
 	}
 
