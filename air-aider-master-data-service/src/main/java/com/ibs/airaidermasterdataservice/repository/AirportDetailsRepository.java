@@ -21,7 +21,6 @@ public interface AirportDetailsRepository extends JpaRepository<AirportDetailsEn
 	 */
 	AirportDetailsEntity findByAirportId(int airportId);
 
-	
 //	AirportDetailsEntity getAirportDetails();
-	
+
 }

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.ibs.airaidermasterdataservice.util.AirAiderCommonConstants.LangCodes;
@@ -22,7 +23,7 @@ public class AirportDetailsEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "AIRPORT_DETAIL_ID")
+	@Column(name = "AIRPORT_DETAIL_ID_PK")
 	private int airportdDetailId;
 
 	@Column(name = "AIRPORT_ID")
@@ -32,6 +33,9 @@ public class AirportDetailsEntity {
 
 	@Column(name = "LANG_CODE")
 	private LangCodes langCode;
+
+	@OneToOne(mappedBy = "airportDetailsEntity")
+	private AirportEntity airportEntity;
 
 	/**
 	 * @return the langCode
