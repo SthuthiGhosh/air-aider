@@ -80,7 +80,7 @@ public class AirportDetailsModel {
 	public static AirportDetailsModel entityToModel(AirportDetailsEntity airportDetailsEntity) {
 		AirportDetailsModel airportDetailsModel = new AirportDetailsModel();
 		airportDetailsModel.setAirportdDetailId(airportDetailsEntity.getAirportdDetailId());
-		airportDetailsModel.setAirportId(airportDetailsEntity.getAirportId());
+//		airportDetailsModel.setAirportId(airportDetailsEntity.getAirportEntity().getAirportId());
 		airportDetailsModel.setAirportName(airportDetailsEntity.getAirportName());
 		airportDetailsModel.setLangCode(airportDetailsEntity.getLangCode());
 		return airportDetailsModel;

@@ -3,6 +3,7 @@
  */
 package com.ibs.airaidermasterdataservice.model;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
@@ -16,6 +17,20 @@ public class MasterDataResponseModel {
 
 	private String queryId;
 	private Map<String, AirportDetailsModel> airportDetails;
+    private List<MessageModel> messageList; 
+	/**
+	 * @return the messageList
+	 */
+	public List<MessageModel> getMessageList() {
+		return messageList;
+	}
+
+	/**
+	 * @param messageList the messageList to set
+	 */
+	public void setMessageList(List<MessageModel> messageList) {
+		this.messageList = messageList;
+	}
 
 	/**
 	 * @return the queryId

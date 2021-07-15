@@ -3,15 +3,18 @@
  */
 package com.ibs.airaidermasterdataservice.entity;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -23,32 +26,61 @@ import javax.persistence.Table;
 public class AirportEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue
 	@Column(name = "AIRPORT_ID")
 	private int airportId;
 
-	@Column(name = "CITY_ID")
-	private int cityId;
-
 	@Column(name = "AIRPORT_CODE")
 	private String airportCode;
+	
+	@Column(name = "ACTIVE_FLAG")
+	private boolean activeFlag;
+	
+	@Column(name = "CREATED_ON")
+	private LocalDate createdOn;
+	
+	@Column(name = "UPDATED_ON")
+	private LocalDate updatedOn;
 
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "AIRPORT_DETAIL_ID_FK")
-	private AirportDetailsEntity airportDetailsEntity;
+	@OneToMany(targetEntity =AirportDetailsEntity.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "mapId" ,referencedColumnName = "AIRPORT_ID")
+	private List<AirportDetailsEntity> airportDetailsEntity;
+
+	@ManyToOne
+	@JoinColumn(name = "cityId", referencedColumnName = "CITY_ID")
+	private CityEntity cityEntity;
+
+//	public AirportEntity(String airportCode, CityEntity cityEntity) {
+//		this.airportCode = airportCode;
+//		this.cityEntity = cityEntity;
+//	}
+
+	/**
+	 * @return the cityEntity
+	 */
+	public CityEntity getCityEntity() {
+		return cityEntity;
+	}
+
+	/**
+	 * @param cityEntity the cityEntity to set
+	 */
+	public void setCityEntity(CityEntity cityEntity) {
+		this.cityEntity = cityEntity;
+	}
 
 	/**
 	 * @return the airportDetailsEntity
 	 */
 
-	public AirportDetailsEntity getAirportDetailsEntity() {
+	public List<AirportDetailsEntity>  getAirportDetailsEntity() {
 		return airportDetailsEntity;
 	}
 
 	/**
 	 * @param airportDetailsEntity the airportDetailsEntity to set
 	 */
-	public void setAirportDetailsEntity(AirportDetailsEntity airportDetailsEntity) {
+	public void setAirportDetailsEntity(List<AirportDetailsEntity> airportDetailsEntity) {
 		this.airportDetailsEntity = airportDetailsEntity;
 	}
 
@@ -81,16 +113,59 @@ public class AirportEntity {
 	}
 
 	/**
-	 * @return the cityId
+	 * @return the activeFlag
 	 */
-	public int getCityId() {
-		return cityId;
+	public boolean getActiveFlag() {
+		return activeFlag;
 	}
 
 	/**
-	 * @param cityId the cityId to set
+	 * @param activeFlag the activeFlag to set
 	 */
-	public void setCityId(int cityId) {
-		this.cityId = cityId;
+	public void setActiveFlag(boolean activeFlag) {
+		this.activeFlag = activeFlag;
 	}
+
+	/**
+	 * @return the createdOn
+	 */
+	public LocalDate getCreatedOn() {
+		return createdOn;
+	}
+
+	/**
+	 * @param createdOn the createdOn to set
+	 */
+	public void setCreatedOn(LocalDate createdOn) {
+		this.createdOn = createdOn;
+	}
+
+	/**
+	 * @return the updatedOn
+	 */
+	public LocalDate getUpdatedOn() {
+		return updatedOn;
+	}
+
+	/**
+	 * @param updatedOn the updatedOn to set
+	 */
+	public void setUpdatedOn(LocalDate updatedOn) {
+		this.updatedOn = updatedOn;
+	}
+	
+
+//	/**
+//	 * @return the cityId
+//	 */
+//	public int getCityId() {
+//		return cityId;
+//	}
+//
+//	/**
+//	 * @param cityId the cityId to set
+//	 */
+//	public void setCityId(int cityId) {
+//		this.cityId = cityId;
+//	}
 }

@@ -15,15 +15,23 @@ import com.ibs.airaidermasterdataservice.service.MasterDataService;
 
 /**
  * @author 91940
- *
+ *Controller class 
  */
 @RestController
 @RequestMapping("/airport")
 public class AirportMasterDataController {
 
+	/**
+	 * Bean injected for master data services
+	 */
 	@Autowired
 	private MasterDataService masterDataService;
 
+	/**
+	 * @param masterDataRequestModel
+	 * @return
+	 * Method for fetch airport details entity for all the given airport codes
+	 */
 	@PostMapping("/fetchmasterdata")
 	MasterDataResponseModel fetchMasterData(@RequestBody MasterDataRequestModel masterDataRequestModel) {
 		return masterDataService.fetchMasterData(masterDataRequestModel);
