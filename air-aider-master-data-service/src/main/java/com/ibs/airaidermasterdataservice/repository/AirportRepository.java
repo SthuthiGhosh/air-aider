@@ -12,25 +12,23 @@ import com.ibs.airaidermasterdataservice.entity.AirportEntity;
 
 /**
  * @author 91940
- *
+ * Interface for Airport Repository extending JpaRepository
  */
 @Repository
 public interface AirportRepository extends JpaRepository<AirportEntity, Integer> {
 
 	/**
 	 * @param airportCode
-	 * @return
+	 * @return Airport Entity
 	 */
 	@Query("From AirportEntity where airportCode=:airportCode")
 	AirportEntity findByAirportCode(@Param("airportCode") String airportCode);
 
 	/**
 	 * @param airportId
-	 * @return
+	 * @return Airport Entity
 	 */
 	@Query("From AirportEntity where airportId=:airportId")
-	AirportEntity findByAirportId(@Param ("airportId") int airportId);
-
-	
+	AirportEntity findByAirportId(@Param("airportId") int airportId);
 
 }

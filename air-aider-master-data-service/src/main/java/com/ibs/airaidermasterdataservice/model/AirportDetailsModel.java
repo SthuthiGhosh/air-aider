@@ -10,15 +10,13 @@ import com.ibs.airaidermasterdataservice.entity.AirportDetailsEntity;
 import com.ibs.airaidermasterdataservice.util.AirAiderCommonConstants.LangCodes;
 
 /**
- * @author 91940
- *
+ * @author 91940 AirportDetailsModel is a class used to set airportdDetails data
+ *         into the object of airportDetailsModel
  */
 
 public class AirportDetailsModel {
 
 	private int airportdDetailId;
-
-//	private int airportId;
 
 	private String airportName;
 
@@ -66,6 +64,10 @@ public class AirportDetailsModel {
 		this.airportName = airportName;
 	}
 
+	/**
+	 * @param airportDetailsEntity
+	 * @return list &lt;AirportDetailsModel &gt;List of AirportDetailsModel
+	 */
 	public static List<AirportDetailsModel> entityToModel(List<AirportDetailsEntity> airportDetailsEntity) {
 		List<AirportDetailsModel> airportDetailsModels = new ArrayList<>();
 

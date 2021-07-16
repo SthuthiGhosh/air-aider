@@ -17,6 +17,7 @@ import javax.persistence.Table;
 
 /**
  * @author Sthuthi Entity class for Airport
+ * Entity class for Airport Entity
  */
 @Entity
 @Table(name = "AIR_AIDER_AIRPORT")

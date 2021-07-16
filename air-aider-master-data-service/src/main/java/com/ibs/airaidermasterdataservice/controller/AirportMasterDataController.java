@@ -15,7 +15,8 @@ import com.ibs.airaidermasterdataservice.service.MasterDataService;
 
 /**
  * @author 91940
- *Controller class 
+ *Controller class where request URL with end-point comes
+ *Achieving Rest features by using RestController annotation
  */
 @RestController
 @RequestMapping("/airport")
@@ -31,6 +32,9 @@ public class AirportMasterDataController {
 	 * @param masterDataRequestModel
 	 * @return
 	 * Method for fetch airport details entity for all the given airport codes
+	 * This method is also used for fetching cityInfo using Airport codes
+	 * This method is also used for fetching airport details entity using airport Id 
+	 * 
 	 */
 	@PostMapping("/fetchmasterdata")
 	MasterDataResponseModel fetchMasterData(@RequestBody MasterDataRequestModel masterDataRequestModel) {

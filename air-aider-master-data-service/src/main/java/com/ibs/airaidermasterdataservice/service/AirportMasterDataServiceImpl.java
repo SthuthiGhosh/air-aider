@@ -23,7 +23,7 @@ import com.ibs.airaidermasterdataservice.repository.CityRepository;
 import com.ibs.airaidermasterdataservice.util.AirAiderCommonConstants.LangCodes;
 
 /**
- * @author 91940
+ * @author 91940 Implementation class for airport master data services interface
  *
  */
 @Service
@@ -35,6 +35,9 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 	@Autowired
 	private AirportRepository airportRepository;
 
+	/**
+	 * Bean injected for City repository
+	 */
 	@Autowired
 	private CityRepository cityRepository;
 
@@ -42,6 +45,8 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 	 * @see com.ibs.airaidermasterdataservice.service.AirportMasterDataService#
 	 * getAirportDetails(java.util.Set, java.lang.String) Method for fetching
 	 * airport info details from a set of airport codes
+	 * 
+	 * @return MasterDataResponseModel having required airport entity details
 	 * 
 	 */
 	@Override
@@ -80,6 +85,8 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 	 * @see com.ibs.airaidermasterdataservice.service.AirportMasterDataService#
 	 * getAirportDetailsByCode(java.util.List, java.lang.String) Method for fetching
 	 * airport info details from a list of airport codes
+	 * 
+	 * @return MasterDataResponseModel having required airport entity details
 	 */
 	@Override
 	public MasterDataResponseModel getAirportDetailsByCode(List<String> airportCodeList, String queryId) {
@@ -116,6 +123,8 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 	/*
 	 * @see com.ibs.airaidermasterdataservice.service.AirportMasterDataService#
 	 * getCityInfoByAirportCode(java.util.Set, java.lang.String)
+	 * 
+	 * @return MasterDataResponseModel having city information
 	 */
 	@Override
 	public MasterDataResponseModel getCityInfoByAirportCode(Set<String> airportCodesForCityInfo, String queryId) {
@@ -144,6 +153,8 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 	/*
 	 * @see com.ibs.airaidermasterdataservice.service.AirportMasterDataService#
 	 * getAirportDetails(int, java.lang.String)
+	 * 
+	 * @return MasterDataResponseModel having required airport entity details
 	 */
 	@Override
 	public MasterDataResponseModel getAirportDetails(int airportId, String queryId) {
@@ -157,7 +168,7 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 			for (AirportDetailsModel model : airportDetailList) {
 				airportDetail.put(model.getLangCode(), model);
 			}
-			
+
 		}
 		masterDataResponseModel.setAirportDetail(airportDetail);
 		return masterDataResponseModel;

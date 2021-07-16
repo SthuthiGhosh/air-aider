@@ -5,7 +5,7 @@ package com.ibs.airaidermasterdataservice.model;
 
 /**
  * @author 91940
- *
+ * MessageModel is a class which is used to set message when wrong requests came
  */
 public class MessageModel {
 	

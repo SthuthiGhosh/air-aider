@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author 91940
- *
+ * MasterDataRequestModel is a class used to get request data
  */
 @Component
 public class MasterDataRequestModel {

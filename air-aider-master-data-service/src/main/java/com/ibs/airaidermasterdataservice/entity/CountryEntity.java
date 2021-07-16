@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 /**
  * @author 91940
- *
+ * 
  */
 @Entity
 @Table(name = "AIR_AIDER_COUNTRY")

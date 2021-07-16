@@ -31,7 +31,9 @@ public class MasterDataService {
 
 	/**
 	 * @param masterDataRequestModel
-	 * @return Method for direction into different services
+	 * @return Method for directing apis into different different services This
+	 *         method navigates to four different methods in the Air aider master
+	 *         data services
 	 */
 	public MasterDataResponseModel fetchMasterData(MasterDataRequestModel masterDataRequestModel) {
 		if (masterDataRequestModel.getAirportCodeSet() != null) {

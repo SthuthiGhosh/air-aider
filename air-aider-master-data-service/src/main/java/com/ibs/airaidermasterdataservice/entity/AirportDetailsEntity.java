@@ -15,7 +15,6 @@ import com.ibs.airaidermasterdataservice.util.AirAiderCommonConstants.LangCodes;
 /**
  * @author 91940
  * Entity class for Airport details
- *
  */
 @Entity
 @Table(name = "AIR_AIDER_AIRPORT_DETAILS")

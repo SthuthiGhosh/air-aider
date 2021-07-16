@@ -17,7 +17,7 @@ import com.ibs.airaidermasterdataservice.util.AirAiderCommonConstants.LangCodes;
 
 /**
  * @author 91940
- *
+ * Entity class for City Details Entity
  */
 @Entity
 @Table(name = "AIR_AIDER_CITY_DETAILS")
@@ -41,28 +41,6 @@ public class CityDetailsEntity {
 	private LocalDate updatedOn;
 
 
-	
-//	private CityEntity cityEntity;
-	
-//	public CityDetailsEntity(LangCodes langCode, String cityName,CityEntity cityEntity) {
-//		this.langCode = langCode;
-//		this.cityName = cityName;
-//		this.cityEntity = cityEntity;
-//	}
-
-//	/**
-//	 * @return the cityEntity
-//	 */
-//	public CityEntity getCityEntity() {
-//		return cityEntity;
-//	}
-//
-//	/**
-//	 * @param cityEntity the cityEntity to set
-//	 */
-//	public void setCityEntity(CityEntity cityEntity) {
-//		this.cityEntity = cityEntity;
-//	}
 
 	/**
 	 * @return the cityDetailId
@@ -78,19 +56,6 @@ public class CityDetailsEntity {
 		this.cityDetailId = cityDetailId;
 	}
 
-//	/**
-//	 * @return the cityId
-//	 */
-//	public int getCityId() {
-//		return cityId;
-//	}
-//
-//	/**
-//	 * @param cityId the cityId to set
-//	 */
-//	public void setCityId(int cityId) {
-//		this.cityId = cityId;
-//	}
 
 	/**
 	 * @return the cityName

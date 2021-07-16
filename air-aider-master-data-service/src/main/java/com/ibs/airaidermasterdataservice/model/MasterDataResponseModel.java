@@ -14,7 +14,7 @@ import com.ibs.airaidermasterdataservice.util.AirAiderCommonConstants.LangCodes;
 
 /**
  * @author 91940
- *
+ * MasterDataResponseModel is a class used to set Response data
  */
 @Component
 public class MasterDataResponseModel {

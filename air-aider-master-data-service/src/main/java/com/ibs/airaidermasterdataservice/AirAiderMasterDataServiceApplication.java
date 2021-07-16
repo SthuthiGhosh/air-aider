@@ -15,7 +15,7 @@ public class AirAiderMasterDataServiceApplication {
 
 	/**
 	 * @param args
-	 * Main method where application runs on server
+	 * Main method where application start running on server
 	 */
 	public static void main(String[] args) {
 		SpringApplication.run(AirAiderMasterDataServiceApplication.class, args);

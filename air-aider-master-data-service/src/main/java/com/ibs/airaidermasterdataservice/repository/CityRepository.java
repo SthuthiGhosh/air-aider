@@ -10,16 +10,9 @@ import com.ibs.airaidermasterdataservice.entity.CityEntity;
 
 /**
  * @author 91940
- *
+ * Interface for City repository extending JpaRepository
  */
 @Repository
-public interface CityRepository extends JpaRepository<CityEntity, Integer>{
-
-	/**
-	 * @param airportCode
-	 * @return
-	 */
-
-
+public interface CityRepository extends JpaRepository<CityEntity, Integer> {
 
 }

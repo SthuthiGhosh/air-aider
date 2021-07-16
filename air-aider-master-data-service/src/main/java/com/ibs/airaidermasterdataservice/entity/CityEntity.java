@@ -13,14 +13,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
  * @author 91940
- *
+ * Entity class for City Entity
  */
 @Entity
 @Table(name = "AIR_AIDER_CITY")
@@ -33,33 +31,23 @@ public class CityEntity {
 
 	@Column(name = "CITY_CODE")
 	private String cityCode;
-	
+
 	@Column(name = "ACTIVE_FLAG")
 	private boolean activeFlag;
-	
+
 	@Column(name = "CREATED_ON")
 	private LocalDate createdOn;
-	
+
 	@Column(name = "UPDATED_ON")
 	private LocalDate updatedOn;
 
-	@OneToMany(targetEntity =CityDetailsEntity.class, cascade = CascadeType.ALL)
+	@OneToMany(targetEntity = CityDetailsEntity.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "cityId", referencedColumnName = "CITY_ID")
 	private List<CityDetailsEntity> cityDetailsEntity;
 
-	@OneToMany(targetEntity =AirportEntity.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "city_Id" ,referencedColumnName = "CITY_ID")
+	@OneToMany(targetEntity = AirportEntity.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "city_Id", referencedColumnName = "CITY_ID")
 	private List<AirportEntity> airportEntities;
-
-//	@ManyToOne
-//	@JoinColumn(name = "countryId", referencedColumnName = "COUNTRY_ID")
-//	private CountryEntity countryEntity;
-
-//	public CityEntity(int countryId, String cityCode) {
-//		this.countryId = countryId;
-//		this.cityCode = cityCode;
-//		
-//	}
 
 	/**
 	 * @return the airportEntities
@@ -74,8 +62,6 @@ public class CityEntity {
 	public void setAirportEntities(List<AirportEntity> airportEntities) {
 		this.airportEntities = airportEntities;
 	}
-
-	
 
 	/**
 	 * @return the cityCode
@@ -160,6 +146,5 @@ public class CityEntity {
 	public void setCityDetailsEntity(List<CityDetailsEntity> cityDetailsEntity) {
 		this.cityDetailsEntity = cityDetailsEntity;
 	}
-
 
 }
