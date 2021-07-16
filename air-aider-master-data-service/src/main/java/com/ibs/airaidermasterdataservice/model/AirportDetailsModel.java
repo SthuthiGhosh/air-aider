@@ -3,6 +3,9 @@
  */
 package com.ibs.airaidermasterdataservice.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.ibs.airaidermasterdataservice.entity.AirportDetailsEntity;
 import com.ibs.airaidermasterdataservice.util.AirAiderCommonConstants.LangCodes;
 
@@ -77,13 +80,15 @@ public class AirportDetailsModel {
 		this.airportName = airportName;
 	}
 
-	public static AirportDetailsModel entityToModel(AirportDetailsEntity airportDetailsEntity) {
+	public static List<AirportDetailsModel> entityToModel(List<AirportDetailsEntity> airportDetailsEntity) {
+		List<AirportDetailsModel> airportDetailsModels=new ArrayList<>();
 		AirportDetailsModel airportDetailsModel = new AirportDetailsModel();
-		airportDetailsModel.setAirportdDetailId(airportDetailsEntity.getAirportdDetailId());
-//		airportDetailsModel.setAirportId(airportDetailsEntity.getAirportEntity().getAirportId());
-		airportDetailsModel.setAirportName(airportDetailsEntity.getAirportName());
-		airportDetailsModel.setLangCode(airportDetailsEntity.getLangCode());
-		return airportDetailsModel;
-
+		for(AirportDetailsEntity airportDetail: airportDetailsEntity) {
+		airportDetailsModel.setAirportdDetailId(airportDetail.getAirportdDetailId());
+		airportDetailsModel.setAirportName(airportDetail.getAirportName());
+		airportDetailsModel.setLangCode(airportDetail.getLangCode());
+		airportDetailsModels.add(airportDetailsModel);
+		}
+		return airportDetailsModels;
 	}
 }

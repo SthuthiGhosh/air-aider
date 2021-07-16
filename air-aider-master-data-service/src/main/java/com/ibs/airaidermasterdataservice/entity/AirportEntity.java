@@ -43,7 +43,7 @@ public class AirportEntity {
 	private LocalDate updatedOn;
 
 	@OneToMany(targetEntity =AirportDetailsEntity.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "mapId" ,referencedColumnName = "AIRPORT_ID")
+	@JoinColumn(name = "airportId" ,referencedColumnName = "AIRPORT_ID")
 	private List<AirportDetailsEntity> airportDetailsEntity;
 
 	@ManyToOne
@@ -155,17 +155,4 @@ public class AirportEntity {
 	}
 	
 
-//	/**
-//	 * @return the cityId
-//	 */
-//	public int getCityId() {
-//		return cityId;
-//	}
-//
-//	/**
-//	 * @param cityId the cityId to set
-//	 */
-//	public void setCityId(int cityId) {
-//		this.cityId = cityId;
-//	}
 }

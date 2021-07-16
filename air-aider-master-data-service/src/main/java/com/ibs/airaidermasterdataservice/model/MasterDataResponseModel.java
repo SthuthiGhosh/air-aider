@@ -3,10 +3,13 @@
  */
 package com.ibs.airaidermasterdataservice.model;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
+
+import com.ibs.airaidermasterdataservice.util.AirAiderCommonConstants.LangCodes;
 
 /**
  * @author 91940
@@ -16,8 +19,9 @@ import org.springframework.stereotype.Component;
 public class MasterDataResponseModel {
 
 	private String queryId;
-	private Map<String, AirportDetailsModel> airportDetails;
-    private List<MessageModel> messageList; 
+	private Map<String, HashMap<LangCodes, AirportDetailsModel>> airportDetails;
+	private List<MessageModel> messageList;
+
 	/**
 	 * @return the messageList
 	 */
@@ -49,15 +53,29 @@ public class MasterDataResponseModel {
 	/**
 	 * @return the airportDetails
 	 */
-	public Map<String, AirportDetailsModel> getAirportDetails() {
+	public Map<String, HashMap<LangCodes, AirportDetailsModel>> getAirportDetails() {
 		return airportDetails;
 	}
 
 	/**
 	 * @param airportDetails the airportDetails to set
 	 */
-	public void setAirportDetails(Map<String, AirportDetailsModel> airportDetails) {
+	public void setAirportDetails(Map<String, HashMap<LangCodes, AirportDetailsModel>> airportDetails) {
 		this.airportDetails = airportDetails;
 	}
+
+//	/**
+//	 * @return the airportDetails
+//	 */
+//	public Map<String, AirportDetailsModel> getAirportDetails() {
+//		return airportDetails;
+//	}
+//
+//	/**
+//	 * @param airportDetails the airportDetails to set
+//	 */
+//	public void setAirportDetails(Map<String, AirportDetailsModel> airportDetails) {
+//		this.airportDetails = airportDetails;
+//	}
 
 }
