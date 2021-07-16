@@ -113,7 +113,6 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 			}
 		}
 		if (messageList != null) {
-
 			masterDataResponseModel.setMessageList(messageList);
 		}
 		masterDataResponseModel.setAirportDetails(airportDetailsMap);
@@ -137,13 +136,10 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 			for (CityEntity city : cityEntities) {
 				List<AirportEntity> airportList = city.getAirportEntities();
 				for (AirportEntity airport : airportList) {
-
 					if (airport.getAirportCode().equals(airportCode)) {
 						cityInfo.put(airportCode, city);
 					}
-
 				}
-
 			}
 		}
 		masterDataResponseModel.setCityInfo(cityInfo);
@@ -161,6 +157,7 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 		MasterDataResponseModel masterDataResponseModel = new MasterDataResponseModel();
 		masterDataResponseModel.setQueryId(queryId);
 		Map<LangCodes, AirportDetailsModel> airportDetail = new HashMap<>();
+		List<MessageModel> messageList = new ArrayList<>();
 		AirportEntity airportEntity = airportRepository.findByAirportId(airportId);
 		if (airportEntity != null) {
 			List<AirportDetailsEntity> airportDetailsEntity = airportEntity.getAirportDetailsEntity();
@@ -169,6 +166,14 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 				airportDetail.put(model.getLangCode(), model);
 			}
 
+		} else {
+			MessageModel messageModel = new MessageModel();
+			messageModel.setMessage("Invalid airport Id" + airportId);
+			messageList.add(messageModel);
+		}
+		if (messageList != null)
+		{
+			masterDataResponseModel.setMessageList(messageList);
 		}
 		masterDataResponseModel.setAirportDetail(airportDetail);
 		return masterDataResponseModel;
