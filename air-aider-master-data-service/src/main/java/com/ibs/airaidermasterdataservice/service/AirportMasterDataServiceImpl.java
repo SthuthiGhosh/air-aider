@@ -124,7 +124,7 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 		Map<String, CityEntity> cityInfo = new HashMap<>();
 		List<MessageModel> messageList = new ArrayList<>();
 		List<CityEntity> cityEntities = cityRepository.findAll();
-     	for (String airportCode : airportCodesForCityInfo) {
+		for (String airportCode : airportCodesForCityInfo) {
 			for (CityEntity city : cityEntities) {
 				List<AirportEntity> airportList = city.getAirportEntities();
 				for (AirportEntity airport : airportList) {
@@ -138,6 +138,28 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 			}
 		}
 		masterDataResponseModel.setCityInfo(cityInfo);
+		return masterDataResponseModel;
+	}
+
+	/*
+	 * @see com.ibs.airaidermasterdataservice.service.AirportMasterDataService#
+	 * getAirportDetails(int, java.lang.String)
+	 */
+	@Override
+	public MasterDataResponseModel getAirportDetails(int airportId, String queryId) {
+		MasterDataResponseModel masterDataResponseModel = new MasterDataResponseModel();
+		masterDataResponseModel.setQueryId(queryId);
+		Map<LangCodes, AirportDetailsModel> airportDetail = new HashMap<>();
+		AirportEntity airportEntity = airportRepository.findByAirportId(airportId);
+		if (airportEntity != null) {
+			List<AirportDetailsEntity> airportDetailsEntity = airportEntity.getAirportDetailsEntity();
+			List<AirportDetailsModel> airportDetailList = AirportDetailsModel.entityToModel(airportDetailsEntity);
+			for (AirportDetailsModel model : airportDetailList) {
+				airportDetail.put(model.getLangCode(), model);
+			}
+			
+		}
+		masterDataResponseModel.setAirportDetail(airportDetail);
 		return masterDataResponseModel;
 	}
 }

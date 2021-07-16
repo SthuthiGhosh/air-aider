@@ -37,4 +37,19 @@ public class AirportMasterDataController {
 		return masterDataService.fetchMasterData(masterDataRequestModel);
 
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

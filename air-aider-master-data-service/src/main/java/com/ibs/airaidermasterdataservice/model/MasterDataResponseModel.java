@@ -23,12 +23,27 @@ public class MasterDataResponseModel {
 	private Map<String, HashMap<LangCodes, AirportDetailsModel>> airportDetails;
 	private List<MessageModel> messageList;
 	private Map<String,CityEntity>cityInfo;
-
+    private Map<LangCodes, AirportDetailsModel> airportDetail;
+	
 	/**
 	 * @return the cityInfo
 	 */
 	public Map<String, CityEntity> getCityInfo() {
 		return cityInfo;
+	}
+
+	/**
+	 * @return the airportDetail
+	 */
+	public Map<LangCodes, AirportDetailsModel> getAirportDetail() {
+		return airportDetail;
+	}
+
+	/**
+	 * @param airportDetail the airportDetail to set
+	 */
+	public void setAirportDetail(Map<LangCodes, AirportDetailsModel> airportDetail) {
+		this.airportDetail = airportDetail;
 	}
 
 	/**

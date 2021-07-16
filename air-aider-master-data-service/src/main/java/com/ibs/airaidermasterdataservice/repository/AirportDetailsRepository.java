@@ -16,24 +16,5 @@ import com.ibs.airaidermasterdataservice.entity.AirportDetailsEntity;
 @Repository
 public interface AirportDetailsRepository extends JpaRepository<AirportDetailsEntity, Integer> {
 
-	/**
-	 * @param airportCode
-	 * @return
-	 */
-//
-//	/**
-//	 * @param airportId
-//	 * @return
-//	 */
-////	AirportDetailsEntity findByAirportId(int airportId);
-//
-//	/**
-//	 * @param airportCode
-//	 * @return
-//	 */
-////	AirportDetailsEntity getAirportDetails();
-//
-//	@Query("From AirportDetailsEntity where airportCode=:d\"")
-//	AirportDetailsEntity findAirportDetailsRepository(@Param("d") String airportCode);
-//
+
 }

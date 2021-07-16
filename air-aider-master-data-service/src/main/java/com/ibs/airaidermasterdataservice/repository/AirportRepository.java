@@ -25,13 +25,12 @@ public interface AirportRepository extends JpaRepository<AirportEntity, Integer>
 	AirportEntity findByAirportCode(@Param("airportCode") String airportCode);
 
 	/**
-	 * @param airportCode
+	 * @param airportId
 	 * @return
 	 */
-	
+	@Query("From AirportEntity where airportId=:airportId")
+	AirportEntity findByAirportId(@Param ("airportId") int airportId);
 
-//	SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
-//	FROM Orders
-//	INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+	
 
 }

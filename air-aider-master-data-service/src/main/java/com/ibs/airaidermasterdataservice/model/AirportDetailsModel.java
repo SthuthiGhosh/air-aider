@@ -52,20 +52,6 @@ public class AirportDetailsModel {
 		this.airportdDetailId = airportdDetailId;
 	}
 
-//	/**
-//	 * @return the airportId
-//	 */
-//	public int getAirportId() {
-//		return airportId;
-//	}
-//
-//	/**
-//	 * @param airportId the airportId to set
-//	 */
-//	public void setAirportId(int airportId) {
-//		this.airportId = airportId;
-//	}
-
 	/**
 	 * @return the airportName
 	 */
