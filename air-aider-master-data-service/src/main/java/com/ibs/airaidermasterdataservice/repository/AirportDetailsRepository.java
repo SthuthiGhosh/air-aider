@@ -20,8 +20,6 @@ public interface AirportDetailsRepository extends JpaRepository<AirportDetailsEn
 	 * @param airportCode
 	 * @return
 	 */
-//	@Query("From AirportDetailsEntity where ")
-//	AirportDetailsEntity findAirportDetailsByAirportCode(String airportCode);
 //
 //	/**
 //	 * @param airportId

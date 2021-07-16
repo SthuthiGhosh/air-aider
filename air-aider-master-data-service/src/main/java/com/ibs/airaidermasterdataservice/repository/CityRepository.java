@@ -15,4 +15,11 @@ import com.ibs.airaidermasterdataservice.entity.CityEntity;
 @Repository
 public interface CityRepository extends JpaRepository<CityEntity, Integer>{
 
+	/**
+	 * @param airportCode
+	 * @return
+	 */
+
+
+
 }

@@ -15,27 +15,23 @@ import com.ibs.airaidermasterdataservice.entity.AirportEntity;
  *
  */
 @Repository
-public interface AirportRepository extends JpaRepository<AirportEntity, Integer>{
+public interface AirportRepository extends JpaRepository<AirportEntity, Integer> {
 
 	/**
 	 * @param airportCode
 	 * @return
 	 */
 	@Query("From AirportEntity where airportCode=:airportCode")
-	AirportEntity findByAirportCode(@Param ("airportCode") String airportCode);
+	AirportEntity findByAirportCode(@Param("airportCode") String airportCode);
 
 	/**
 	 * @param airportCode
 	 * @return
 	 */
-//	@Query("From AirportEntity where airportCode=:d")
-//	AirportEntity findByAirportCode(@Param ("d") String airportCode);
+	
 
-	/**
-	 * @param airportCode
-	 */
-	
-//	AirportDetailsEntity findByAirportDetailsEntity(String airportCode);
-	
+//	SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+//	FROM Orders
+//	INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
 
 }

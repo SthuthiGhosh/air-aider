@@ -14,10 +14,12 @@ import org.springframework.stereotype.Service;
 
 import com.ibs.airaidermasterdataservice.entity.AirportDetailsEntity;
 import com.ibs.airaidermasterdataservice.entity.AirportEntity;
+import com.ibs.airaidermasterdataservice.entity.CityEntity;
 import com.ibs.airaidermasterdataservice.model.AirportDetailsModel;
 import com.ibs.airaidermasterdataservice.model.MasterDataResponseModel;
 import com.ibs.airaidermasterdataservice.model.MessageModel;
 import com.ibs.airaidermasterdataservice.repository.AirportRepository;
+import com.ibs.airaidermasterdataservice.repository.CityRepository;
 import com.ibs.airaidermasterdataservice.util.AirAiderCommonConstants.LangCodes;
 
 /**
@@ -33,10 +35,13 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 	@Autowired
 	private AirportRepository airportRepository;
 
+	@Autowired
+	private CityRepository cityRepository;
+
 	/*
 	 * @see com.ibs.airaidermasterdataservice.service.AirportMasterDataService#
-	 * getAirportDetails(java.util.Set, java.lang.String)
-	 * Method for fetching airport info details from a set of airport codes
+	 * getAirportDetails(java.util.Set, java.lang.String) Method for fetching
+	 * airport info details from a set of airport codes
 	 * 
 	 */
 	@Override
@@ -53,10 +58,10 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 				List<AirportDetailsModel> airportDetailList = AirportDetailsModel.entityToModel(airportDetailsEntity);
 				for (AirportDetailsModel model : airportDetailList) {
 					airportMap.put(model.getLangCode(), model);
-					
+
 				}
 				airportDetailsMap.put(airportCode, airportMap);
-				
+
 			} else {
 				MessageModel messageModel = new MessageModel();
 				messageModel.setMessage("Invalid airport code" + airportCode);
@@ -73,8 +78,8 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 
 	/*
 	 * @see com.ibs.airaidermasterdataservice.service.AirportMasterDataService#
-	 * getAirportDetailsByCode(java.util.List, java.lang.String)
-	 * Method for fetching airport info details from a list of airport codes
+	 * getAirportDetailsByCode(java.util.List, java.lang.String) Method for fetching
+	 * airport info details from a list of airport codes
 	 */
 	@Override
 	public MasterDataResponseModel getAirportDetailsByCode(List<String> airportCodeList, String queryId) {
@@ -90,10 +95,10 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 				List<AirportDetailsModel> airportDetailList = AirportDetailsModel.entityToModel(airportDetailsEntity);
 				for (AirportDetailsModel model : airportDetailList) {
 					airportMap.put(model.getLangCode(), model);
-					
+
 				}
 				airportDetailsMap.put(airportCode, airportMap);
-				
+
 			} else {
 				MessageModel messageModel = new MessageModel();
 				messageModel.setMessage("Invalid airport code" + airportCode);
@@ -106,5 +111,33 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 		}
 		masterDataResponseModel.setAirportDetails(airportDetailsMap);
 		return masterDataResponseModel;
-}
+	}
+
+	/*
+	 * @see com.ibs.airaidermasterdataservice.service.AirportMasterDataService#
+	 * getCityInfoByAirportCode(java.util.Set, java.lang.String)
+	 */
+	@Override
+	public MasterDataResponseModel getCityInfoByAirportCode(Set<String> airportCodesForCityInfo, String queryId) {
+		MasterDataResponseModel masterDataResponseModel = new MasterDataResponseModel();
+		masterDataResponseModel.setQueryId(queryId);
+		Map<String, CityEntity> cityInfo = new HashMap<>();
+		List<MessageModel> messageList = new ArrayList<>();
+		List<CityEntity> cityEntities = cityRepository.findAll();
+     	for (String airportCode : airportCodesForCityInfo) {
+			for (CityEntity city : cityEntities) {
+				List<AirportEntity> airportList = city.getAirportEntities();
+				for (AirportEntity airport : airportList) {
+
+					if (airport.getAirportCode().equals(airportCode)) {
+						cityInfo.put(airportCode, city);
+					}
+
+				}
+
+			}
+		}
+		masterDataResponseModel.setCityInfo(cityInfo);
+		return masterDataResponseModel;
+	}
 }

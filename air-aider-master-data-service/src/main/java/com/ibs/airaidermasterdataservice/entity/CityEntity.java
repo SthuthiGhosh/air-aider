@@ -6,6 +6,7 @@ package com.ibs.airaidermasterdataservice.entity;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,15 +43,17 @@ public class CityEntity {
 	@Column(name = "UPDATED_ON")
 	private LocalDate updatedOn;
 
-	@OneToOne(mappedBy = "cityEntity")
-	private CityDetailsEntity cityDetailsEntity;
+	@OneToMany(targetEntity =CityDetailsEntity.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "cityId", referencedColumnName = "CITY_ID")
+	private List<CityDetailsEntity> cityDetailsEntity;
 
-	@OneToMany(mappedBy = "cityEntity")
+	@OneToMany(targetEntity =AirportEntity.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "city_Id" ,referencedColumnName = "CITY_ID")
 	private List<AirportEntity> airportEntities;
 
-	@ManyToOne
-	@JoinColumn(name = "countryId", referencedColumnName = "COUNTRY_ID")
-	private CountryEntity countryEntity;
+//	@ManyToOne
+//	@JoinColumn(name = "countryId", referencedColumnName = "COUNTRY_ID")
+//	private CountryEntity countryEntity;
 
 //	public CityEntity(int countryId, String cityCode) {
 //		this.countryId = countryId;
@@ -72,19 +75,7 @@ public class CityEntity {
 		this.airportEntities = airportEntities;
 	}
 
-	/**
-	 * @return the cityDetailsEntity
-	 */
-	public CityDetailsEntity getCityDetailsEntity() {
-		return cityDetailsEntity;
-	}
-
-	/**
-	 * @param cityDetailsEntity the cityDetailsEntity to set
-	 */
-	public void setCityDetailsEntity(CityDetailsEntity cityDetailsEntity) {
-		this.cityDetailsEntity = cityDetailsEntity;
-	}
+	
 
 	/**
 	 * @return the cityCode
@@ -157,18 +148,18 @@ public class CityEntity {
 	}
 
 	/**
-	 * @return the countryEntity
+	 * @return the cityDetailsEntity
 	 */
-	public CountryEntity getCountryEntity() {
-		return countryEntity;
+	public List<CityDetailsEntity> getCityDetailsEntity() {
+		return cityDetailsEntity;
 	}
 
 	/**
-	 * @param countryEntity the countryEntity to set
+	 * @param cityDetailsEntity the cityDetailsEntity to set
 	 */
-	public void setCountryEntity(CountryEntity countryEntity) {
-		this.countryEntity = countryEntity;
+	public void setCityDetailsEntity(List<CityDetailsEntity> cityDetailsEntity) {
+		this.cityDetailsEntity = cityDetailsEntity;
 	}
-	
+
 
 }

@@ -9,6 +9,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
+import com.ibs.airaidermasterdataservice.entity.CityEntity;
 import com.ibs.airaidermasterdataservice.util.AirAiderCommonConstants.LangCodes;
 
 /**
@@ -21,6 +22,21 @@ public class MasterDataResponseModel {
 	private String queryId;
 	private Map<String, HashMap<LangCodes, AirportDetailsModel>> airportDetails;
 	private List<MessageModel> messageList;
+	private Map<String,CityEntity>cityInfo;
+
+	/**
+	 * @return the cityInfo
+	 */
+	public Map<String, CityEntity> getCityInfo() {
+		return cityInfo;
+	}
+
+	/**
+	 * @param cityInfo the cityInfo to set
+	 */
+	public void setCityInfo(Map<String, CityEntity> cityInfo) {
+		this.cityInfo = cityInfo;
+	}
 
 	/**
 	 * @return the messageList

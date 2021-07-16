@@ -10,16 +10,13 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- * @author Sthuthi
- *
+ * @author Sthuthi Entity class for Airport
  */
 @Entity
 @Table(name = "AIR_AIDER_AIRPORT")
@@ -32,48 +29,25 @@ public class AirportEntity {
 
 	@Column(name = "AIRPORT_CODE")
 	private String airportCode;
-	
+
 	@Column(name = "ACTIVE_FLAG")
 	private boolean activeFlag;
-	
+
 	@Column(name = "CREATED_ON")
 	private LocalDate createdOn;
-	
+
 	@Column(name = "UPDATED_ON")
 	private LocalDate updatedOn;
 
-	@OneToMany(targetEntity =AirportDetailsEntity.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "airportId" ,referencedColumnName = "AIRPORT_ID")
+	@OneToMany(targetEntity = AirportDetailsEntity.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "airportId", referencedColumnName = "AIRPORT_ID")
 	private List<AirportDetailsEntity> airportDetailsEntity;
-
-	@ManyToOne
-	@JoinColumn(name = "cityId", referencedColumnName = "CITY_ID")
-	private CityEntity cityEntity;
-
-//	public AirportEntity(String airportCode, CityEntity cityEntity) {
-//		this.airportCode = airportCode;
-//		this.cityEntity = cityEntity;
-//	}
-
-	/**
-	 * @return the cityEntity
-	 */
-	public CityEntity getCityEntity() {
-		return cityEntity;
-	}
-
-	/**
-	 * @param cityEntity the cityEntity to set
-	 */
-	public void setCityEntity(CityEntity cityEntity) {
-		this.cityEntity = cityEntity;
-	}
 
 	/**
 	 * @return the airportDetailsEntity
 	 */
 
-	public List<AirportDetailsEntity>  getAirportDetailsEntity() {
+	public List<AirportDetailsEntity> getAirportDetailsEntity() {
 		return airportDetailsEntity;
 	}
 
@@ -153,6 +127,5 @@ public class AirportEntity {
 	public void setUpdatedOn(LocalDate updatedOn) {
 		this.updatedOn = updatedOn;
 	}
-	
 
 }

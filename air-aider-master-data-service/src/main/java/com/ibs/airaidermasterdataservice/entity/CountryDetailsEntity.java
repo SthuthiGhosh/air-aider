@@ -29,16 +29,15 @@ public class CountryDetailsEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	@Column(name = "COUNTRY_DETAIL_ID")
 	private int countryDetailId;
 
-	@Column
+	@Column(name = "COUNTRY_NAME")
 	private String countryName;
 
 	@Column(name = "LANG_CODE")
 	private LangCodes langCode;
 	
-
 	@Column(name = "CREATED_ON")
 	private LocalDate createdOn;
 	

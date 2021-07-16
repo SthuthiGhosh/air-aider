@@ -5,21 +5,16 @@ package com.ibs.airaidermasterdataservice.entity;
 
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.ibs.airaidermasterdataservice.util.AirAiderCommonConstants.LangCodes;
 
 /**
  * @author 91940
+ * Entity class for Airport details
  *
  */
 @Entity
@@ -35,37 +30,12 @@ public class AirportDetailsEntity {
 
 	@Column(name = "LANG_CODE")
 	private LangCodes langCode;
-	
+
 	@Column(name = "CREATED_ON")
 	private LocalDate createdOn;
-	
+
 	@Column(name = "UPDATED_ON")
 	private LocalDate updatedOn;
-
-
-//	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "airportId", referencedColumnName = "AIRPORT_ID")
-//	private AirportEntity airportEntity;
-
-//	public AirportDetailsEntity(String airportName, LangCodes langCode, AirportEntity airportEntity) {
-//		this.airportName = airportName;
-//		this.langCode = langCode;
-//		this.airportEntity = airportEntity;
-//	}
-//
-//	/**
-//	 * @return the airportEntity
-//	 */
-//	public AirportEntity getAirportEntity() {
-//		return airportEntity;
-//	}
-//
-//	/**
-//	 * @param airportEntity the airportEntity to set
-//	 */
-//	public void setAirportEntity(AirportEntity airportEntity) {
-//		this.airportEntity = airportEntity;
-//	}
 
 	/**
 	 * @return the langCode

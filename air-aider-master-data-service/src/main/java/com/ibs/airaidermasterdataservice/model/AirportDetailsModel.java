@@ -18,7 +18,7 @@ public class AirportDetailsModel {
 
 	private int airportdDetailId;
 
-	private int airportId;
+//	private int airportId;
 
 	private String airportName;
 
@@ -52,19 +52,19 @@ public class AirportDetailsModel {
 		this.airportdDetailId = airportdDetailId;
 	}
 
-	/**
-	 * @return the airportId
-	 */
-	public int getAirportId() {
-		return airportId;
-	}
-
-	/**
-	 * @param airportId the airportId to set
-	 */
-	public void setAirportId(int airportId) {
-		this.airportId = airportId;
-	}
+//	/**
+//	 * @return the airportId
+//	 */
+//	public int getAirportId() {
+//		return airportId;
+//	}
+//
+//	/**
+//	 * @param airportId the airportId to set
+//	 */
+//	public void setAirportId(int airportId) {
+//		this.airportId = airportId;
+//	}
 
 	/**
 	 * @return the airportName
@@ -81,13 +81,14 @@ public class AirportDetailsModel {
 	}
 
 	public static List<AirportDetailsModel> entityToModel(List<AirportDetailsEntity> airportDetailsEntity) {
-		List<AirportDetailsModel> airportDetailsModels=new ArrayList<>();
-		AirportDetailsModel airportDetailsModel = new AirportDetailsModel();
-		for(AirportDetailsEntity airportDetail: airportDetailsEntity) {
-		airportDetailsModel.setAirportdDetailId(airportDetail.getAirportdDetailId());
-		airportDetailsModel.setAirportName(airportDetail.getAirportName());
-		airportDetailsModel.setLangCode(airportDetail.getLangCode());
-		airportDetailsModels.add(airportDetailsModel);
+		List<AirportDetailsModel> airportDetailsModels = new ArrayList<>();
+
+		for (AirportDetailsEntity airportDetail : airportDetailsEntity) {
+			AirportDetailsModel airportDetailsModel = new AirportDetailsModel();
+			airportDetailsModel.setAirportdDetailId(airportDetail.getAirportdDetailId());
+			airportDetailsModel.setAirportName(airportDetail.getAirportName());
+			airportDetailsModel.setLangCode(airportDetail.getLangCode());
+			airportDetailsModels.add(airportDetailsModel);
 		}
 		return airportDetailsModels;
 	}

@@ -18,6 +18,19 @@ public class MasterDataRequestModel {
 	private String queryId;
 	private Set<String> airportCodeSet;
 	private List<String> airportCodeList;
+	private Set<String> airportCodesForCityInfo;
+	/**
+	 * @return the airportCodesForCityInfo
+	 */
+	public Set<String> getAirportCodesForCityInfo() {
+		return airportCodesForCityInfo;
+	}
+	/**
+	 * @param airportCodesForCityInfo the airportCodesForCityInfo to set
+	 */
+	public void setAirportCodesForCityInfo(Set<String> airportCodesForCityInfo) {
+		this.airportCodesForCityInfo = airportCodesForCityInfo;
+	}
 	/**
 	 * @return the airportCodeList
 	 */

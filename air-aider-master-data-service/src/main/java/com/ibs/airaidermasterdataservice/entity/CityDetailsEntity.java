@@ -6,14 +6,11 @@ package com.ibs.airaidermasterdataservice.entity;
 
 import java.time.LocalDate;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.ibs.airaidermasterdataservice.util.AirAiderCommonConstants.LangCodes;
@@ -44,9 +41,8 @@ public class CityDetailsEntity {
 	private LocalDate updatedOn;
 
 
-	@OneToOne
-	@JoinColumn(name = "cityId", referencedColumnName = "CITY_ID")
-	private CityEntity cityEntity;
+	
+//	private CityEntity cityEntity;
 	
 //	public CityDetailsEntity(LangCodes langCode, String cityName,CityEntity cityEntity) {
 //		this.langCode = langCode;
@@ -54,19 +50,19 @@ public class CityDetailsEntity {
 //		this.cityEntity = cityEntity;
 //	}
 
-	/**
-	 * @return the cityEntity
-	 */
-	public CityEntity getCityEntity() {
-		return cityEntity;
-	}
-
-	/**
-	 * @param cityEntity the cityEntity to set
-	 */
-	public void setCityEntity(CityEntity cityEntity) {
-		this.cityEntity = cityEntity;
-	}
+//	/**
+//	 * @return the cityEntity
+//	 */
+//	public CityEntity getCityEntity() {
+//		return cityEntity;
+//	}
+//
+//	/**
+//	 * @param cityEntity the cityEntity to set
+//	 */
+//	public void setCityEntity(CityEntity cityEntity) {
+//		this.cityEntity = cityEntity;
+//	}
 
 	/**
 	 * @return the cityDetailId

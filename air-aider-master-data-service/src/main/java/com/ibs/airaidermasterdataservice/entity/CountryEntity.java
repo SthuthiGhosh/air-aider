@@ -43,8 +43,6 @@ public class CountryEntity {
 	@OneToOne(mappedBy = "countryEntity")
 	private CountryDetailsEntity countryDetailsEntity;
 	
-	@OneToMany(mappedBy = "countryEntity")
-	private List<CityEntity> cityEntities;
 
 	/**
 	 * @return the countryId
@@ -130,19 +128,7 @@ public class CountryEntity {
 		this.updatedOn = updatedOn;
 	}
 
-	/**
-	 * @return the cityEntities
-	 */
-	public List<CityEntity> getCityEntities() {
-		return cityEntities;
-	}
-
-	/**
-	 * @param cityEntities the cityEntities to set
-	 */
-	public void setCityEntities(List<CityEntity> cityEntities) {
-		this.cityEntities = cityEntities;
-	}
+	
 
 
 }
