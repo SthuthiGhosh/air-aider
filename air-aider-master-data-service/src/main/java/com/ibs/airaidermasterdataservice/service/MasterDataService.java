@@ -48,6 +48,12 @@ public class MasterDataService {
 		} else if (masterDataRequestModel.getAirportId() != 0) {
 			masterDataResponseModel = airportMasterDataService.getAirportDetails(masterDataRequestModel.getAirportId(),
 					masterDataRequestModel.getQueryId());
+		} else if (masterDataRequestModel.getCityCodeSet() != null) {
+			masterDataResponseModel = airportMasterDataService.getCityInfoByCityCode(
+					masterDataRequestModel.getCityCodeSet(), masterDataRequestModel.getQueryId());
+		}else if (masterDataRequestModel.getCityId() != 0) {
+			masterDataResponseModel = airportMasterDataService.getCityDetails(masterDataRequestModel.getCityId(),
+					masterDataRequestModel.getQueryId());
 		}
 		return masterDataResponseModel;
 

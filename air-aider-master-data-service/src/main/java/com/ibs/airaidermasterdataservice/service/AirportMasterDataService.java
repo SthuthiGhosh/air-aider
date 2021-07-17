@@ -46,4 +46,18 @@ public interface AirportMasterDataService {
 	 */
 	MasterDataResponseModel getAirportDetails(int airportId, String queryId);
 
+	/**
+	 * @param cityCodeSet
+	 * @param queryId
+	 * @return MasterDataResponseModel having city information by city code
+	 */
+	MasterDataResponseModel getCityInfoByCityCode(List<String> cityCodeSet, String queryId);
+
+	/**
+	 * @param cityId
+	 * @param queryId
+	 * @return MasterDataResponseModel having city information by city id
+	 */
+	MasterDataResponseModel getCityDetails(int cityId, String queryId);
+
 }

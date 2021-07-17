@@ -3,6 +3,7 @@
  */
 package com.ibs.airaidermasterdataservice.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +11,9 @@ import com.ibs.airaidermasterdataservice.entity.AirportDetailsEntity;
 import com.ibs.airaidermasterdataservice.util.AirAiderCommonConstants.LangCodes;
 
 /**
- * @author 91940 AirportDetailsModel is a class used to set airportdDetails data
- *         into the object of airportDetailsModel
+ * @author 91940 
+ * AirportDetailsModel is a class used to set airportdDetails data
+ *         into the object of airportDetailsModel 
  */
 
 public class AirportDetailsModel {
@@ -21,6 +23,10 @@ public class AirportDetailsModel {
 	private String airportName;
 
 	private LangCodes langCode;
+	
+	private LocalDate createdOn;
+	
+	private LocalDate updatedOn;
 
 	/**
 	 * @return the langCode
@@ -65,6 +71,34 @@ public class AirportDetailsModel {
 	}
 
 	/**
+	 * @return the createdOn
+	 */
+	public LocalDate getCreatedOn() {
+		return createdOn;
+	}
+
+	/**
+	 * @param createdOn the createdOn to set
+	 */
+	public void setCreatedOn(LocalDate createdOn) {
+		this.createdOn = createdOn;
+	}
+
+	/**
+	 * @return the updatedOn
+	 */
+	public LocalDate getUpdatedOn() {
+		return updatedOn;
+	}
+
+	/**
+	 * @param updatedOn the updatedOn to set
+	 */
+	public void setUpdatedOn(LocalDate updatedOn) {
+		this.updatedOn = updatedOn;
+	}
+
+	/**
 	 * @param airportDetailsEntity
 	 * @return list &lt;AirportDetailsModel &gt;List of AirportDetailsModel
 	 */
@@ -76,6 +110,8 @@ public class AirportDetailsModel {
 			airportDetailsModel.setAirportdDetailId(airportDetail.getAirportdDetailId());
 			airportDetailsModel.setAirportName(airportDetail.getAirportName());
 			airportDetailsModel.setLangCode(airportDetail.getLangCode());
+			airportDetailsModel.setCreatedOn(airportDetail.getCreatedOn());
+			airportDetailsModel.setUpdatedOn(airportDetail.getUpdatedOn());
 			airportDetailsModels.add(airportDetailsModel);
 		}
 		return airportDetailsModels;

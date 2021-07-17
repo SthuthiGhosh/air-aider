@@ -13,8 +13,7 @@ import com.ibs.airaidermasterdataservice.entity.CityEntity;
 import com.ibs.airaidermasterdataservice.util.AirAiderCommonConstants.LangCodes;
 
 /**
- * @author 91940
- * MasterDataResponseModel is a class used to set Response data
+ * @author 91940 MasterDataResponseModel is a class used to set Response data
  */
 @Component
 public class MasterDataResponseModel {
@@ -22,14 +21,30 @@ public class MasterDataResponseModel {
 	private String queryId;
 	private Map<String, HashMap<LangCodes, AirportDetailsModel>> airportDetails;
 	private List<MessageModel> messageList;
-	private Map<String,CityEntity>cityInfo;
-    private Map<LangCodes, AirportDetailsModel> airportDetail;
-	
+	private Map<String, CityEntity> cityInfo;
+	private Map<LangCodes, AirportDetailsModel> airportDetail;
+	private Map<String, HashMap<LangCodes, CityDetailsModel>> cityInfoDetails;
+	private Map<LangCodes, CityDetailsModel> cityDetail;
+
 	/**
 	 * @return the cityInfo
 	 */
 	public Map<String, CityEntity> getCityInfo() {
 		return cityInfo;
+	}
+
+	/**
+	 * @return the cityInfoDetails
+	 */
+	public Map<String, HashMap<LangCodes, CityDetailsModel>> getCityInfoDetails() {
+		return cityInfoDetails;
+	}
+
+	/**
+	 * @param cityInfoDetails the cityInfoDetails to set
+	 */
+	public void setCityInfoDetails(Map<String, HashMap<LangCodes, CityDetailsModel>> cityInfoDetails) {
+		this.cityInfoDetails = cityInfoDetails;
 	}
 
 	/**
@@ -82,6 +97,20 @@ public class MasterDataResponseModel {
 	}
 
 	/**
+	 * @return the cityDetail
+	 */
+	public Map<LangCodes, CityDetailsModel> getCityDetail() {
+		return cityDetail;
+	}
+
+	/**
+	 * @param cityDetail the cityDetail to set
+	 */
+	public void setCityDetail(Map<LangCodes, CityDetailsModel> cityDetail) {
+		this.cityDetail = cityDetail;
+	}
+
+	/**
 	 * @return the airportDetails
 	 */
 	public Map<String, HashMap<LangCodes, AirportDetailsModel>> getAirportDetails() {
@@ -94,19 +123,5 @@ public class MasterDataResponseModel {
 	public void setAirportDetails(Map<String, HashMap<LangCodes, AirportDetailsModel>> airportDetails) {
 		this.airportDetails = airportDetails;
 	}
-
-//	/**
-//	 * @return the airportDetails
-//	 */
-//	public Map<String, AirportDetailsModel> getAirportDetails() {
-//		return airportDetails;
-//	}
-//
-//	/**
-//	 * @param airportDetails the airportDetails to set
-//	 */
-//	public void setAirportDetails(Map<String, AirportDetailsModel> airportDetails) {
-//		this.airportDetails = airportDetails;
-//	}
 
 }

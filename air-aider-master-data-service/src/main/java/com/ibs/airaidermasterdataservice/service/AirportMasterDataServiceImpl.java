@@ -14,8 +14,10 @@ import org.springframework.stereotype.Service;
 
 import com.ibs.airaidermasterdataservice.entity.AirportDetailsEntity;
 import com.ibs.airaidermasterdataservice.entity.AirportEntity;
+import com.ibs.airaidermasterdataservice.entity.CityDetailsEntity;
 import com.ibs.airaidermasterdataservice.entity.CityEntity;
 import com.ibs.airaidermasterdataservice.model.AirportDetailsModel;
+import com.ibs.airaidermasterdataservice.model.CityDetailsModel;
 import com.ibs.airaidermasterdataservice.model.MasterDataResponseModel;
 import com.ibs.airaidermasterdataservice.model.MessageModel;
 import com.ibs.airaidermasterdataservice.repository.AirportRepository;
@@ -123,7 +125,7 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 	 * @see com.ibs.airaidermasterdataservice.service.AirportMasterDataService#
 	 * getCityInfoByAirportCode(java.util.Set, java.lang.String)
 	 * 
-	 * @return MasterDataResponseModel having city information
+	 * @return MasterDataResponseModel having city information by airport codes
 	 */
 	@Override
 	public MasterDataResponseModel getCityInfoByAirportCode(Set<String> airportCodesForCityInfo, String queryId) {
@@ -150,7 +152,8 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 	 * @see com.ibs.airaidermasterdataservice.service.AirportMasterDataService#
 	 * getAirportDetails(int, java.lang.String)
 	 * 
-	 * @return MasterDataResponseModel having required airport entity details
+	 * @return MasterDataResponseModel having required airport entity details by
+	 * airport id
 	 */
 	@Override
 	public MasterDataResponseModel getAirportDetails(int airportId, String queryId) {
@@ -171,11 +174,81 @@ public class AirportMasterDataServiceImpl implements AirportMasterDataService {
 			messageModel.setMessage("Invalid airport Id" + airportId);
 			messageList.add(messageModel);
 		}
-		if (messageList != null)
-		{
+		if (messageList != null) {
 			masterDataResponseModel.setMessageList(messageList);
 		}
 		masterDataResponseModel.setAirportDetail(airportDetail);
 		return masterDataResponseModel;
+	}
+
+	/*
+	 * @see com.ibs.airaidermasterdataservice.service.AirportMasterDataService#
+	 * getCityInfoByCityCode(java.util.List, java.lang.String)
+	 * 
+	 * @return MasterDataResponseModel having required city details info by city
+	 * code
+	 */
+	@Override
+	public MasterDataResponseModel getCityInfoByCityCode(List<String> cityCodeSet, String queryId) {
+		MasterDataResponseModel masterDataResponseModel = new MasterDataResponseModel();
+		masterDataResponseModel.setQueryId(queryId);
+		Map<String, HashMap<LangCodes, CityDetailsModel>> cityInfoDetails = new HashMap<>();
+		HashMap<LangCodes, CityDetailsModel> cityMap = new HashMap<>();
+		List<MessageModel> messageList = new ArrayList<>();
+		for (String cityCode : cityCodeSet) {
+			CityEntity cityEntity = cityRepository.findByCityCode(cityCode);
+			if (cityEntity != null) {
+				List<CityDetailsEntity> cityDetailsEntity = cityEntity.getCityDetailsEntity();
+				List<CityDetailsModel> cityDetailList = CityDetailsModel.entityToModel(cityDetailsEntity);
+				for (CityDetailsModel model : cityDetailList) {
+					cityMap.put(model.getLangCode(), model);
+				}
+				cityInfoDetails.put(cityCode, cityMap);
+
+			} else {
+				MessageModel messageModel = new MessageModel();
+				messageModel.setMessage("Invalid city code" + cityCode);
+				messageList.add(messageModel);
+			}
+		}
+		if (messageList != null) {
+
+			masterDataResponseModel.setMessageList(messageList);
+		}
+		masterDataResponseModel.setCityInfoDetails(cityInfoDetails);
+		return masterDataResponseModel;
+
+	}
+
+	/*
+	 * @see com.ibs.airaidermasterdataservice.service.AirportMasterDataService#
+	 * getCityDetails(int, java.lang.String)
+	 * 
+	 * @return MasterDataResponseModel having required city details info by city id
+	 */
+	@Override
+	public MasterDataResponseModel getCityDetails(int cityId, String queryId) {
+		MasterDataResponseModel masterDataResponseModel = new MasterDataResponseModel();
+		masterDataResponseModel.setQueryId(queryId);
+		Map<LangCodes, CityDetailsModel> cityDetail = new HashMap<>();
+		List<MessageModel> messageList = new ArrayList<>();
+		CityEntity cityEntity = cityRepository.findByCityId(cityId);
+		if (cityEntity != null) {
+			List<CityDetailsEntity> cityDetailsEntity = cityEntity.getCityDetailsEntity();
+			List<CityDetailsModel> cityDetailList = CityDetailsModel.entityToModel(cityDetailsEntity);
+			for (CityDetailsModel model : cityDetailList) {
+				cityDetail.put(model.getLangCode(), model);
+			}
+		} else {
+			MessageModel messageModel = new MessageModel();
+			messageModel.setMessage("Invalid city Id" + cityId);
+			messageList.add(messageModel);
+		}
+		if (messageList != null) {
+			masterDataResponseModel.setMessageList(messageList);
+		}
+		masterDataResponseModel.setCityDetail(cityDetail);
+		return masterDataResponseModel;
+
 	}
 }
